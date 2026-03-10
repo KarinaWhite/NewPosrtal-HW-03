@@ -10,10 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
-from pathlib import Path
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 import os
+from pathlib import Path
 import sys
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -50,6 +48,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'django_apscheduler',
 ]
 SITE_ID = 1
 MIDDLEWARE = [
@@ -68,7 +67,7 @@ ROOT_URLCONF = 'simple_signup.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,7 +78,8 @@ TEMPLATES = [
         },
     },
 ]
-
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'news@portal.com'
 WSGI_APPLICATION = 'simple_signup.wsgi.application'
 
 
@@ -118,7 +118,11 @@ AUTHENTICATION_BACKENDS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
-
+MANAGERS = [
+    ('Admin', 'your_admin_email@example.com'),
+]
+APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
+APSCHEDULER_RUN_NOW_TIMEOUT = 25
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'

@@ -1,0 +1,11 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %} {{ product.name }} {% endblock title %}
+
+{% block content %}
+    <h1>{{ product.name }}</h1>
+    <p><i>Дата публикации: {{ product.dateCreation|date:'d.m.Y' }}</i></p>
+    <hr>
+    <p>{{ product.description }}</p>
+    <a href="{% url 'products_list' %}">Назад к списку</a>
+{% endblock content %}
