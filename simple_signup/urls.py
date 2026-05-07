@@ -4,5 +4,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('news/', include('simpleapp.urls')),
+    path('', include('simpleapp.urls')), # Передаем всё управление приложению
 ]
