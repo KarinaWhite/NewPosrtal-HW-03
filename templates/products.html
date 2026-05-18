@@ -1,4 +1,5 @@
 {% extends 'flatpages/default.html' %}
+{% load i18n %}
 {% load custom_filters %}
 {% for post in news %}
     <h2>{{ post.title }}</h2>
@@ -10,8 +11,20 @@
     <hr>
 {% endfor %}
 {% block content %}
-<h1>Все товары/новости</h1>
-
+<h1>{% trans "Все товары/новости" %}</h1>
+<form action="{% url 'set_language' %}" method="post" style="margin: 15px 0;">
+    {% csrf_token %}
+    <input name="next" type="hidden" value="{{ request.get_full_path }}">
+    <select name="language" onchange="this.form.submit()">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% for language in LANGUAGES %}
+            <option value="{{ language.0 }}" {% if language.0 == LANGUAGE_CODE %}selected{% endif %}>
+                {{ language.1 }}
+            </option>
+        {% endfor %}
+    </select>
+</form>
 <h3>Количество: {{ products|length }}</h3>
 
 <form action="" method="get">

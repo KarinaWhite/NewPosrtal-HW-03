@@ -1,0 +1,49 @@
+2026-05-19 00:10:31,626 ERROR Internal Server Error: /api/news/ C:\Users\Karina Belova\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\utils\log.py (<class 'django.core.exceptions.ImproperlyConfigured'>, ImproperlyConfigured('Field name `category` is not valid for model `MyModel` in `sign.serializers.MyModelSerializer`.'), <traceback object at 0x0000021C85EF2780>)
+Traceback (most recent call last):
+  File "C:\Users\Karina Belova\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Karina Belova\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\base.py", line 221, in _get_response
+    response = response.render()
+  File "C:\Users\Karina Belova\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Karina Belova\PycharmProjects\PythonProject\.venv\Lib\site-packages\rest_framework\response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "C:\Users\Karina Belova\PycharmProjects\PythonProject\.venv\Lib\site-packages\rest_framework\renderers.py", line 750, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "C:\Users\Karina Belova\PycharmProjects\PythonProject\.venv\Lib\site-packages\rest_framework\renderers.py", line 681, in get_context
+    raw_data_post_form = self.get_raw_data_form(data, view, 'POST', request)
+  File "C:\Users\Karina Belova\PycharmProjects\PythonProject\.venv\Lib\site-packages\rest_framework\renderers.py", line 588, in get_raw_data_form
+    data = serializer.data.copy()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Karina Belova\PycharmProjects\PythonProject\.venv\Lib\site-packages\rest_framework\serializers.py", line 585, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Karina Belova\PycharmProjects\PythonProject\.venv\Lib\site-packages\rest_framework\serializers.py", line 255, in data
+    self._data = self.get_initial()
+                 ~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Karina Belova\PycharmProjects\PythonProject\.venv\Lib\site-packages\rest_framework\serializers.py", line 435, in get_initial
+    for field in self.fields.values()
+                 ^^^^^^^^^^^
+  File "C:\Users\Karina Belova\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Karina Belova\PycharmProjects\PythonProject\.venv\Lib\site-packages\rest_framework\serializers.py", line 386, in fields
+    for key, value in self.get_fields().items():
+                      ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Karina Belova\PycharmProjects\PythonProject\.venv\Lib\site-packages\rest_framework\serializers.py", line 1132, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ~~~~~~~~~~~~~~~~^
+        source, info, model, depth
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Karina Belova\PycharmProjects\PythonProject\.venv\Lib\site-packages\rest_framework\serializers.py", line 1278, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Karina Belova\PycharmProjects\PythonProject\.venv\Lib\site-packages\rest_framework\serializers.py", line 1396, in build_unknown_field
+    raise ImproperlyConfigured(
+    ...<2 lines>...
+    )
+django.core.exceptions.ImproperlyConfigured: Field name `category` is not valid for model `MyModel` in `sign.serializers.MyModelSerializer`.
+2026-05-19 00:10:31,633 ERROR "GET /api/news/ HTTP/1.1" 500 130571 C:\Users\Karina Belova\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\utils\log.py None
